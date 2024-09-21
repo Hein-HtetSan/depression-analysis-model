@@ -1,1 +1,5 @@
 venv
+Revdess-dataset
+__pycache__/
+*.pyc
+*/__init__.py

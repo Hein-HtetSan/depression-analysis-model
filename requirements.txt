@@ -1,2 +1,13 @@
 numpy
 opensmile
+streamlit 
+pydub
+librosa
+xgboost
+scikit-learn
+matplotlib
+joblib
+torchaudio
+streamlit-webrtc
+altair
+SpeechRecognition
