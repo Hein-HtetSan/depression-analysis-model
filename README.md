@@ -1,5 +1,10 @@
 ## Drepression Analysis with Machine Learning
 
+## Contributors 
+Pyi Bhone Kyaw
+Hein Htet San
+Hein Htet Aung (David Chang)
+
 ### clone the project
 ```shell
 git clone https://github.com/Hein-HtetSan/depression-analysis-model.git
