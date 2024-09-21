@@ -25,5 +25,10 @@ source venv/bin/activate
 
 ### Install the OpenSmile
 ```shell
-pip install opensmile
+pip install -r requirements.txt
+```
+
+### Run the application
+```shell
+streamlit run app.py
 ```
