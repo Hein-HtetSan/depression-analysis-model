@@ -1,10 +1,12 @@
+### this is where model prediction method exist
+
 import pandas as pd
 import streamlit as st
 import torchaudio
-
+# import model and configured opensimle libs
 from frontend.components.config import model, smile
 
-
+# def the prediction method
 def prediction(audio_path):
     
     # Load and process the uploaded audio
@@ -15,6 +17,7 @@ def prediction(audio_path):
     
     # Convert to DataFrame for prediction
     df = pd.DataFrame([feature], columns=smile.feature_names)# Rename the columns: first column to 'label', the rest to '0', '1', ..., '87'
+    # this will be change the pd columns to numeric format
     new_column_names = [str(i) for i in range(len(smile.feature_names))]
     
     # Apply the new column names

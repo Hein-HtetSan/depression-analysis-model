@@ -1,9 +1,11 @@
+### This is the record component
+
 import os
 
 import pandas as pd
 import speech_recognition as sr
 import streamlit as st
-
+# import the prediction method to predict the input
 from frontend.components.predict import prediction
 
 # Initialize recognizer class
@@ -22,7 +24,7 @@ def open_recorder():
         </style>
         """, unsafe_allow_html=True)
     
-    
+    # sub header of the recording audio section
     st.subheader("Press button to record audio! 🔉")
     if st.button("Start Record"):
         with sr.Microphone() as source:
