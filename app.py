@@ -1,6 +1,9 @@
 
+### this file is the main file of the project
+
 import streamlit as st  # import the streamlit lib
 
+# import the open recorder components and open uploader components
 from frontend.components.record import open_recorder
 from frontend.components.uploader import open_uploader
 
