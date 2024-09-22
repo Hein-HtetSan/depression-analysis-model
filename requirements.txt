@@ -11,6 +11,5 @@ torchaudio
 streamlit-webrtc
 altair
 SpeechRecognition
-pyaudio
 soundfile
 matplotlib
