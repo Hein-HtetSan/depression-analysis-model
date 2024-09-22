@@ -56,3 +56,11 @@ def open_uploader():
             # Show the graph of audio
             show_graph(audio_path)  # Ensure this function is defined
             st.success(f"Mood: {prediction_result}")
+            
+            # remove the uploaded files
+            # Check if the file exists before attempting to delete it
+            if os.path.exists(audio_path):
+                os.remove(audio_path)
+                print(f"{audio_path} deleted successfully!")
+            else:
+                print(f"{audio_path} does not exist.")
