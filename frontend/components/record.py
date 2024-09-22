@@ -1,5 +1,6 @@
 import os
 
+import librosa
 import streamlit as st
 from audio_recorder_streamlit import audio_recorder
 
@@ -39,6 +40,12 @@ def open_recorder():
 
         with open(audio_path, 'wb') as f:
             f.write(audio_bytes)  # Save audio_bytes to audio_path
+
+# Check the length of the audio
+        y, sr = librosa.load(audio_path, sr=None)
+        if len(y) < 22050:  # Check if less than 1 second (assuming 22,050 Hz sample rate)
+            st.warning("Audio is too short for processing. Please record for longer.")
+            return
 
         # Display the result and show the graph
         st.subheader("Result")
