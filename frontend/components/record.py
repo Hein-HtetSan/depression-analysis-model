@@ -1,16 +1,11 @@
 import os
 
-import pandas as pd
-import pyaudio
-import speech_recognition as sr
 import streamlit as st
+from audio_recorder_streamlit import audio_recorder
 
 from frontend.components.graph import show_graph
-# Import the prediction method to predict the input
 from frontend.components.predict import prediction
 
-# Initialize recognizer class
-recognizer = sr.Recognizer()
 
 # Function to handle audio recording and prediction
 def open_recorder():
@@ -26,74 +21,31 @@ def open_recorder():
         </style>
         """, unsafe_allow_html=True)
 
-    # Initialize session state to control "listening" and "processing" phases
-    if 'listening' not in st.session_state:
-        st.session_state.listening = False
-    if 'processing' not in st.session_state:
-        st.session_state.processing = False
-
     # Subheader for recording audio section
     st.subheader("Press the button to record audio! 🔉")
-    
-    # Initialize PyAudio
-    audio = pyaudio.PyAudio()
 
-    # Check if a default input device is available
-    try:
-        default_device_index = audio.get_default_input_device_info()
-    except OSError:
-        st.error("No default input device (microphone) available. Please check your system.")
-        return
+    # Use audio-recorder-streamlit to record the audio
+    audio_bytes = audio_recorder()
 
-    # Button to start recording
-    if st.button("Start Record"):
-        # Set session state to show "Listening..."
-        st.session_state.listening = True
-        st.session_state.processing = False
-        
-        # Update Streamlit UI to show "Listening..." message
-        with st.spinner("Listening..."):
-            with sr.Microphone() as source:
-                print("start listening")
-                audio = recognizer.listen(source)
-                
-                # Set session state for "Processing..."
-                st.session_state.listening = False
-                st.session_state.processing = True
+    # If audio is recorded, process it
+    if audio_bytes:
+        # Play the recorded audio
+        st.audio(audio_bytes, format="audio/wav")
 
-        # Now show the processing spinner
-        with st.spinner("Processing..."):
-            print("start processing")
-            
-            # Try to recognize the speech in the audio
-            try:
-                # Convert the speech into text (optional, for confirmation)
-                text = recognizer.recognize_google(audio)
-                st.write("You said:", text)
-                
-                # Save the audio to a temporary file
-                wav_directory = "temp/"
-                os.makedirs(wav_directory, exist_ok=True)
-                audio_path = os.path.join(wav_directory, "recorded_audio.wav")
-                
-                with open(audio_path, 'wb') as f:
-                    f.write(audio.get_wav_data())
-                    
-                st.subheader("Result")
-                # show the graph of audio
-                show_graph(audio_path)
-                
-                # Call the prediction function and get the prediction result
-                prediction_result = prediction(audio_path)
-                st.success(f"Mood: {prediction_result}")
-                
-                
+        # Save the recorded audio to a temporary file
+        wav_directory = "temp/"
+        os.makedirs(wav_directory, exist_ok=True)
+        audio_path = os.path.join(wav_directory, "recorded_audio.wav")
 
-            except sr.UnknownValueError:
-                st.warning("Sorry, I could not understand the audio.")  # Warning for unknown value error
-            except sr.RequestError as e:
-                st.warning(f"Could not request results; {e}")
+        with open(audio_path, 'wb') as f:
+            f.write(audio_bytes)  # Save audio_bytes to audio_path
 
-        # Reset the processing state after completion
-        st.session_state.processing = False
+        # Display the result and show the graph
+        st.subheader("Result")
+        show_graph(audio_path)
 
+        # Call the prediction function and display the result
+        prediction_result = prediction(audio_path)
+        st.success(f"Mood: {prediction_result}")
+    else:
+        st.warning("No audio recorded yet. Please press the button to record.")

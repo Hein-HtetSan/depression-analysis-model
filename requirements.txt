@@ -14,3 +14,4 @@ SpeechRecognition
 soundfile
 matplotlib
 pyaudio==0.2.11
+audio-recorder-streamlit
