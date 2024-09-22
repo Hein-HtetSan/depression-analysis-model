@@ -50,12 +50,6 @@ st.markdown("""
 # Define the app title
 st.title("Depression Classifier")
 
-
-# Create a button for GitHub
-github_url = "https://github.com/Hein-HtetSan/depression-analysis-model.git"  # Replace with your GitHub link
-if st.button("🍵 Source Code"): # Redirect to the GitHub link
-    st.write(f"[Click here to view the Source Code]({github_url})")
-
 # Sidebar for navigation
 nav_option = st.sidebar.radio("Choose an option:", ["Demo", "Documentation"])
 
