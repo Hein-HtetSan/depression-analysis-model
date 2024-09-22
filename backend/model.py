@@ -6,7 +6,6 @@ import joblib
 model_path = os.path.join('backend', 'xgboost_model.pkl')
 
 # Load the model using joblib
-@st.cache_resource
 def load_model():
     return joblib.load(model_path)
 
