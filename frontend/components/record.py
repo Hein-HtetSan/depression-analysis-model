@@ -1,6 +1,7 @@
 import os
 
 import pandas as pd
+import pyaudio
 import speech_recognition as sr
 import streamlit as st
 
@@ -33,6 +34,16 @@ def open_recorder():
 
     # Subheader for recording audio section
     st.subheader("Press the button to record audio! 🔉")
+    
+    # Initialize PyAudio
+    audio = pyaudio.PyAudio()
+
+    # Check if a default input device is available
+    try:
+        default_device_index = audio.get_default_input_device_info()
+    except OSError:
+        st.error("No default input device (microphone) available. Please check your system.")
+        return
 
     # Button to start recording
     if st.button("Start Record"):
