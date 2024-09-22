@@ -5,6 +5,7 @@ import os
 import pandas as pd
 import streamlit as st
 
+from frontend.components.graph import show_graph
 # import the prediction function of the model
 from frontend.components.predict import prediction
 
@@ -46,5 +47,12 @@ def open_uploader():
         
         # if the button is clicke then start predict
         if st.button("Classify Depression"):
-            prediction_result = prediction(audio_path)
-            st.write(f"Prediction : {prediction_result}")
+            with st.spinner("Classifying... Please wait."):
+                # Call the prediction function
+                prediction_result = prediction(audio_path)
+
+            # Display the result after prediction
+            st.subheader("Result")
+            # Show the graph of audio
+            show_graph(audio_path)  # Ensure this function is defined
+            st.success(f"Mood: {prediction_result}")
