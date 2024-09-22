@@ -13,5 +13,4 @@ altair
 SpeechRecognition
 soundfile
 matplotlib
-PyAudio
-pyaudio
+pyaudio==0.2.11
