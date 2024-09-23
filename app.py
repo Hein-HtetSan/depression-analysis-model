@@ -48,7 +48,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Define the app title
-st.title("Depression Classifier")
+st.title("Vi")
 
 # Sidebar for navigation
 nav_option = st.sidebar.radio("Choose an option:", ["Demo", "Documentation"])
