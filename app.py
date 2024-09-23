@@ -1,10 +1,19 @@
 
 ### this file is the main file of the project
+import os
+
 import streamlit as st  # import the streamlit lib
 
+from frontend.components.documentation import show_doc
 # import the open recorder components and open uploader components
 from frontend.components.record import open_recorder
 from frontend.components.uploader import open_uploader
+
+# Get the current working directory (i.e., the project folder)
+cwd = os.getcwd()
+
+# Construct the path to the README.md file
+readme_path = os.path.join(cwd, "README.md")
 
 # Custom CSS for buttons
 st.markdown("""
@@ -47,9 +56,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Define the app title
-st.title("Vi")
-
 # Sidebar for navigation
 nav_option = st.sidebar.radio("Choose an option:", ["Demo", "Documentation"])
 
@@ -57,8 +63,11 @@ if nav_option == "Documentation":
     st.sidebar.write("### Documentation")
     st.sidebar.write("Here you can find the documentation for the app...")
     # Add your documentation links or content here
+    show_doc(readme_path)
 
 elif nav_option == "Demo":
+    # Define the app title
+    st.title("VoxWisp AI")
     # Add a radio button to choose between file upload or audio recording
     option = st.selectbox(
         "Choose input method",
