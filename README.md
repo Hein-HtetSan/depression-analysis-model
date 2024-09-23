@@ -132,7 +132,7 @@ X_train, X_valid, y_train, y_valid = train_test_split(data1.loc[:, data1.columns
 
 ## Model Architecutre
 
-![alt text](image.png)
+![alt text](image-3.png)
 
 <p align=justify>
 Our project, VoxWispAI, utilizes the RAVDESS dataset to analyze audio features for depression detection. The model architecture is as follows:
@@ -188,7 +188,7 @@ model.fit(X_train, y_train,verbose = True)
 
 ### XGBoost
 
-![alt text](./asset/image/image.png)
+![alt text](image.png)
 
 <p align=justify>
 XGBoost is a highly efficient and scalable gradient boosting algorithm known for its speed and performance in machine learning tasks. It employs a parallelized tree-boosting approach, adding decision trees that predict the residuals of previous predictions, which enhances predictive accuracy.
@@ -282,7 +282,7 @@ with open("recorded_audio.wav", "wb") as file:
       # Rename columns for the DataFrame
       new_column_names = [str(i) for i in range(len(smile.feature_names))]
       df.columns = new_column_names
-      
+
       # Predict depression states using the trained binary model
       prediction = model.predict(df)
       # Map the prediction to human-readable labels
@@ -300,7 +300,7 @@ We fine-tuned the model to improve accuracy and avoid overfitting. This led to s
 
 | Confusion Matrix | ROC Curve |
 |----|---|
-|  ![alt text](./asset/image/image-1.png) | ![alt text](./asset/image/image-2.png)|
+|  ![alt text](image-1.png) | ![alt text](image-2.png)|
 
 <p align=justify>
 Our ROC curve shows strong predictive performance with an AUC of 0.90. This indicates we effectively distinguish between positive and negative classes with minimal trade-offs between true positives and false positives.
