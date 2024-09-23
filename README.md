@@ -2,9 +2,9 @@
 
 ## Introduction
 
-<p align=justify>
+
 VoxWispAI is a cutting-edge platform that detects depression through voice analysis, using advanced XGBoost machine learning techniques. Developed by Simbolo students, it aims to bridge the gap between human emotions and AI, addressing emotional and social challenges in today's society.
-</p>
+
 
 
 ## Contributors 
@@ -23,19 +23,19 @@ VoxWispAI is a cutting-edge platform that detects depression through voice analy
 
 ## Project Overview
 
-<p align=justify>
-Depression Detection is a speech-based classifier that analyzes emotional and acoustic features to detect depression. We use OpenSMILE to extract eGeMAPS features, which are then classified by the XGBoost algorithm to predict depression.
-</p>
 
-<p align=justify> 
+Depression Detection is a speech-based classifier that analyzes emotional and acoustic features to detect depression. We use OpenSMILE to extract eGeMAPS features, which are then classified by the XGBoost algorithm to predict depression.
+
+
+ 
 Our project, VoxWispAI, uses the RAVDNESS dataset to extract 88 audio features using OpenSMILE's eGeMAPSV02 configuration. These features are then mapped to binary labels and fed into the XGBoost model to predict depression outcomes, enabling VoxWispAI to identify emotional states from audio characteristics.
-</p>
+
 
 ## Dataset Preparation
 
-<p align=justify>
+
 We used the RAVDESS dataset, which contains 1440 WAV files of emotional speech and song by 24 actors. The dataset features eight emotions, including neutral, happy, sad, and angry, expressed through both speech and song with varying intensities.
-</p>
+
 
 ### Dataset Details
 
@@ -49,9 +49,9 @@ We used the RAVDESS dataset, which contains 1440 WAV files of emotional speech a
 
 ## Feature Extraction
 
-<p align=justify>
+
 Effective feature extraction is crucial for accurately identifying depression through Speech Emotion Recognition (SER). This process converts raw audio (.wav) files into numerical values that capture various emotional and acoustic characteristics. 
-</p>
+
 
 ### OpenSMILE and eGeMAPS
 
@@ -101,9 +101,9 @@ features_df.to_csv('ravdess_features.csv', index=False)
 
 ### Merged the feature and label
 
-<p align=justify>
+
 We used OpenSMILE to extract 88 audio features using the eGeMAPSV02 configuration. These features are then mapped to binary labels indicating the presence or absence of depression.
-</p>
+
 
 ### Code
 ```python
@@ -132,11 +132,11 @@ X_train, X_valid, y_train, y_valid = train_test_split(data1.loc[:, data1.columns
 
 ## Model Architecutre
 
-![alt text](image.png)
+![alt text](image-3.png)
 
-<p align=justify>
+
 Our project, VoxWispAI, utilizes the RAVDESS dataset to analyze audio features for depression detection. The model architecture is as follows:
-</p>
+
 
 - **Feature Extraction**: OpenSMILE extracts 88 audio features using the eGeMAPSV02 configuration.
 - **Feature Mapping**: Features are mapped to binary labels indicating the presence or absence of depression.
@@ -147,9 +147,9 @@ This systematic approach allows VoxWispAI to effectively identify and classify e
 
 ## Training Model
 
-<p align=justify>
+
 We utilized binary classification with the XGBoost model to distinguish between depressed and non-depressed states based on the extracted features from the RAVDESS dataset. The XGBoost model is effective for depression detection and contributes to the advancement of speech emotion recognition systems.
-</p>
+
 
 ### Code
 
@@ -188,11 +188,11 @@ model.fit(X_train, y_train,verbose = True)
 
 ### XGBoost
 
-![alt text](./asset/image/image.png)
+![alt text](image.png)
 
-<p align=justify>
+
 XGBoost is a highly efficient and scalable gradient boosting algorithm known for its speed and performance in machine learning tasks. It employs a parallelized tree-boosting approach, adding decision trees that predict the residuals of previous predictions, which enhances predictive accuracy.
-</p>
+
 
 ### Key Features
 
@@ -219,9 +219,9 @@ XGBoost is a highly efficient and scalable gradient boosting algorithm known for
 | 12  | alpha             | L1 regularization term                                                     | 2               |
 | 13  | lambda            | L2 regularization term                                                     | 2               |
 
-<p align=justify>
+
 The XGBoost model parameters are tailored for effective binary classification. We set the objective to binary:logistic, using decision trees as the booster, with the following settings:
-</p>
+
 
 - Learning rate: 0.1
 - Max tree depth: 5
@@ -282,7 +282,7 @@ with open("recorded_audio.wav", "wb") as file:
       # Rename columns for the DataFrame
       new_column_names = [str(i) for i in range(len(smile.feature_names))]
       df.columns = new_column_names
-      
+
       # Predict depression states using the trained binary model
       prediction = model.predict(df)
       # Map the prediction to human-readable labels
@@ -294,23 +294,23 @@ with open("recorded_audio.wav", "wb") as file:
 
 ## Evaluation
 
-<p align=justify>
+
 We fine-tuned the model to improve accuracy and avoid overfitting. This led to significant improvements in metrics, making our XGBoost model reliable for detecting depressive states in speech.
-</p>
+
 
 | Confusion Matrix | ROC Curve |
 |----|---|
-|  ![alt text](./asset/image/image-1.png) | ![alt text](./asset/image/image-2.png)|
+|  ![alt text](image-1.png) | ![alt text](image-2.png)|
 
-<p align=justify>
+
 Our ROC curve shows strong predictive performance with an AUC of 0.90. This indicates we effectively distinguish between positive and negative classes with minimal trade-offs between true positives and false positives.
-</p>
+
 
 ## Classification Report and Test Accuracy
 
-<p align=justify>
+
 The classification report for VoxWispAI, powered by XGBoost, shows strong performance.
-</p>
+
 
 - Class 0:
     - Precision: 0.84
