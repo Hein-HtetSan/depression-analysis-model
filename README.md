@@ -102,13 +102,8 @@ features_df.to_csv('ravdess_features.csv', index=False)
 ### Merged the feature and label
 
 
-We used OpenSMILE to extract 88 audio features using the eGeMAPSV02 configuration. These features are then mapped to binary labels indicating the presence or absence of depression.
+We used OpenSMILE to extract 88 audio features using the eGeMAPSV02 configuration. These features are then mapped to binary labels indicating the presence or absence of depression. We merged the lable and feature by traditional way.
 
-
-### Code
-```python
-
-```
 
 
 ### Split the dataset
@@ -350,6 +345,8 @@ While maintaining a commitment to **user trust** and **emotional well-being**, V
 ## References
 
 This project is referenced by the paper - [IEEE ICCE-TW 2024](https://www.icce-tw.org/) **(Proceeding)**
+
+You can try with the model **[Demo](https://depression-analysis-model-lzxgrcdxudwjarhssproas.streamlit.app/)**.
 
 -----
 
