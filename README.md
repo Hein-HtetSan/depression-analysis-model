@@ -408,7 +408,7 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-### Install the OpenSmile
+### Install the required libraries
 ```shell
 pip install -r requirements.txt
 ```
