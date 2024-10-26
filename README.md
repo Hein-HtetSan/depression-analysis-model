@@ -344,7 +344,7 @@ While maintaining a commitment to **user trust** and **emotional well-being**, V
 
 ## References
 
-This project is referenced by the paper - [IEEE ICCE-TW 2024](https://www.icce-tw.org/) **(Proceeding)**
+This project is referenced by the paper - [IEEE ICCE-TW 2024](https://ieeexplore.ieee.org/document/10674452) 
 
 You can try with the model **[Demo](https://depression-analysis-model-lzxgrcdxudwjarhssproas.streamlit.app/)**.
 
